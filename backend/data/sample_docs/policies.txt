@@ -1,0 +1,75 @@
+
+# Privacy Policy
+
+## Information We Collect
+We collect information you provide directly, including:
+- Name, email, phone number, shipping address
+- Payment information (processed securely by third parties)
+- Order history and preferences
+- Communications with customer support
+
+## How We Use Your Information
+- Process and fulfill your orders
+- Send order confirmations and shipping updates
+- Provide customer support
+- Personalize your shopping experience
+- Send promotional emails (with your consent)
+- Improve our products and services
+
+## Information Sharing
+We do NOT sell your personal information. We share data only with:
+- Payment processors (for secure transactions)
+- Shipping carriers (for delivery)
+- Service providers who assist our operations
+
+## Data Security
+We use SSL encryption and secure servers. However, no internet transmission is 100% secure. We recommend using strong passwords and not sharing account credentials.
+
+## Your Rights
+You can:
+- Access your data by logging into your account
+- Request deletion of your data (email privacy@example.com)
+- Opt out of marketing emails
+- Request a copy of your data
+
+## Cookies
+We use cookies to:
+- Remember your preferences
+- Keep you logged in
+- Analyze site traffic
+You can disable cookies in your browser settings.
+
+Contact: privacy@example.com
+
+---
+
+# Terms of Service
+
+## Agreement
+By using our website, you agree to these terms.
+
+## Account Responsibilities
+- Provide accurate information
+- Keep your password secure
+- Notify us of unauthorized access
+
+## Ordering
+- Prices are subject to change
+- We may cancel orders due to pricing errors
+- Orders may be limited per customer
+
+## Returns
+- Subject to our 30-day return policy
+- Items must be in original condition
+- Refunds processed within 5-7 business days
+
+## Intellectual Property
+All content on this website is owned by us or our licensors. You may not reproduce, distribute, or create derivative works without permission.
+
+## Limitation of Liability
+We are not liable for indirect, incidental, or consequential damages arising from use of our services.
+
+## Governing Law
+These terms are governed by the laws of the State of California.
+
+Questions? Contact legal@example.com

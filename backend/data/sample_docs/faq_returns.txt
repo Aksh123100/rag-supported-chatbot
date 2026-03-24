@@ -1,0 +1,133 @@
+# E-commerce Customer Support Knowledge Base
+
+## Returns & Refunds
+
+### Q: What is your return policy?
+We offer a 30-day return policy for most items. Items must be returned in their original condition with all tags attached. Some items like underwear, swimwear, and personalized products cannot be returned for hygiene reasons.
+
+### Q: How do I initiate a return?
+1. Log into your account
+2. Go to "My Orders"
+3. Select the order you want to return
+4. Click "Request Return"
+5. Choose your return reason
+6. Print the return shipping label
+
+### Q: How long does a refund take?
+Refunds typically take 5-7 business days after we receive your returned item. The refund will be credited to your original payment method. You'll receive an email confirmation once the refund is processed.
+
+### Q: Can I exchange an item instead of returning it?
+Yes! Select "Exchange" instead of "Return" when initiating your return. Choose the size or color you want, and we'll ship the new item once we receive your return. Exchanges are free of charge.
+
+### Q: What if my item arrives damaged?
+Contact us within 48 hours of delivery with photos of the damage. We'll arrange a free return and send a replacement immediately. No need to wait for the return to be processed.
+
+## Shipping & Delivery
+
+### Q: What are your shipping options?
+- **Standard Shipping**: 5-7 business days (Free on orders over $50)
+- **Express Shipping**: 2-3 business days ($9.99)
+- **Next Day Delivery**: Order before 2 PM for next business day delivery ($19.99)
+- **International Shipping**: 7-14 business days (varies by destination)
+
+### Q: How can I track my order?
+Once your order ships, you'll receive an email with tracking information. You can also track your order by:
+1. Logging into your account
+2. Going to "My Orders"
+3. Clicking on your order number
+
+### Q: Do you ship internationally?
+Yes, we ship to over 50 countries! International shipping costs are calculated at checkout based on your location. Customs fees may apply and are the buyer's responsibility.
+
+### Q: What if my package is lost?
+If your tracking shows "Delivered" but you haven't received it:
+1. Check with neighbors or building management
+2. Look around delivery areas (porch, garage, etc.)
+3. Wait 24 hours - sometimes carriers mark as delivered early
+4. Contact us if still not found - we'll reship or refund
+
+## Payment & Pricing
+
+### Q: What payment methods do you accept?
+We accept:
+- Credit/Debit Cards (Visa, MasterCard, American Express, Discover)
+- PayPal
+- Apple Pay
+- Google Pay
+- Shop Pay (Buy Now, Pay Later)
+- Gift Cards
+
+### Q: Is my payment information secure?
+Yes! We use industry-standard SSL encryption. We never store your full credit card number on our servers. All transactions are processed through PCI-compliant payment processors.
+
+### Q: Do you offer Buy Now, Pay Later?
+Yes! We partner with Shop Pay and Klarna to offer installment payments. Split your purchase into 4 interest-free payments. Select "Pay in installments" at checkout.
+
+### Q: Can I use multiple payment methods?
+Yes! You can combine gift cards with other payment methods. However, credit cards cannot be split across a single order.
+
+## Account & Orders
+
+### Q: How do I create an account?
+Click "Sign Up" in the top right corner. Enter your email and create a password. You can also sign up using Google or Facebook for faster checkout.
+
+### Q: I forgot my password. How do I reset it?
+1. Click "Sign In"
+2. Click "Forgot Password?"
+3. Enter your email address
+4. Check your inbox for the reset link
+5. Create a new password
+
+### Q: Can I modify my order after placing it?
+You can modify your order within 30 minutes of placing it:
+1. Go to "My Orders"
+2. Click on your order
+3. Select "Modify Order"
+After 30 minutes, orders are processed and cannot be changed.
+
+### Q: How do I cancel my order?
+Orders can be cancelled within 30 minutes of placement. After that, they enter our fulfillment process. If you need to cancel after 30 minutes, contact customer support immediately.
+
+### Q: Can I ship to a different address than my billing address?
+Yes! During checkout, select "Ship to a different address" and enter the shipping address. Gift orders can include a personalized message.
+
+## Product Information
+
+### Q: Are your products authentic?
+Yes, 100%! We're an authorized retailer for all brands we carry. Every product comes with original packaging and authenticity guarantee.
+
+### Q: How do I find my size?
+Click on the "Size Guide" link on any product page. Enter your measurements and we'll recommend the best size. Most items also have customer reviews mentioning fit.
+
+### Q: Do you price match?
+Yes, we offer price matching within 14 days of purchase. The item must be:
+- Identical (same brand, model, color, size)
+- In stock at the competitor
+- From an authorized retailer
+
+Contact us with the competitor's link and we'll refund the difference.
+
+### Q: What if an item goes on sale after I bought it?
+We offer price adjustments within 7 days of purchase. Contact us with your order number and we'll refund the difference to your original payment method.
+
+## Special Services
+
+### Q: Do you offer gift wrapping?
+Yes! Select "Add Gift Wrapping" at checkout for $4.99. We'll wrap your item in premium paper with a ribbon and include your personalized message.
+
+### Q: Can I include a gift message?
+Yes! Gift messages are free. Enter your message during checkout and it'll appear on a gift receipt. The price won't be shown to the recipient.
+
+### Q: Do you have a loyalty program?
+Yes! Our Rewards Program gives you points for every purchase:
+- 1 point per $1 spent
+- 100 points = $5 reward
+- Birthday bonus points
+- Exclusive member-only sales
+- Early access to new products
+
+### Q: How do I contact customer support?
+- **Email**: support@example.com
+- **Phone**: 1-800-123-4567 (Mon-Fri, 9 AM - 6 PM EST)
+- **Live Chat**: Available 24/7 on our website
+- **Response Time**: We typically respond within 24 hours

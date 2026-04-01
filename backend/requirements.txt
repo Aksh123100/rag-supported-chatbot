@@ -7,8 +7,9 @@ python-multipart==0.0.6
 pydantic==2.5.3
 pydantic-settings==2.1.0
 
-# OpenAI & LLM
-openai==1.12.0
+# LLM & Embeddings
+groq==0.13.0
+voyageai==0.2.3
 
 # Vector Database - FAISS (Windows compatible)
 faiss-cpu==1.8.0
@@ -17,6 +18,10 @@ numpy<2.0.0
 # Utilities
 python-dotenv==1.0.1
 tiktoken==0.5.2
+requests==2.31.0
+
+# Rate Limiting & Security
+slowapi==0.1.9
 
 # Testing
 pytest==7.4.4

@@ -1,56 +1,30 @@
 """
-Embedding service for generating text embeddings.
+Embedding service using Voyage AI (free cloud API, fast).
 """
 from typing import List
-from openai import OpenAI
-from app.config import settings
+import voyageai
+import os
 
 
 class EmbeddingService:
-    """Service for generating embeddings using OpenAI."""
+    """Service for generating embeddings using Voyage AI."""
 
     def __init__(self):
-        """Initialize embedding service."""
-        self.client = OpenAI(api_key=settings.openai_api_key)
-        self.model = settings.embedding_model
+        """Initialize embedding service with Voyage AI."""
+        api_key = os.getenv("VOYAGE_API_KEY", "pa-Z9tLIIroFUuajg7QKG580xDXiulLNaZTUIOP5K5MwRt")
+        self.client = voyageai.Client(api_key=api_key)
+        self.model = "voyage-3-lite"  # Fast, free tier friendly
 
     def embed_texts(self, texts: List[str]) -> List[List[float]]:
-        """
-        Generate embeddings for a list of texts.
-
-        Args:
-            texts: List of text strings to embed.
-
-        Returns:
-            List of embedding vectors.
-        """
-        response = self.client.embeddings.create(
-            input=texts,
-            model=self.model
-        )
-        return [item.embedding for item in response.data]
+        """Generate embeddings for a list of texts."""
+        result = self.client.embed(texts, model=self.model, input_type="document")
+        return result.embeddings
 
     def embed_query(self, query: str) -> List[float]:
-        """
-        Generate embedding for a single query.
-
-        Args:
-            query: Query string to embed.
-
-        Returns:
-            Embedding vector.
-        """
-        response = self.client.embeddings.create(
-            input=query,
-            model=self.model
-        )
-        return response.data[0].embedding
+        """Generate embedding for a single query."""
+        result = self.client.embed([query], model=self.model, input_type="query")
+        return result.embeddings[0]
 
     def get_embedding_dimension(self) -> int:
-        """Get the dimension of embeddings for the current model."""
-        dimensions = {
-            "text-embedding-3-small": 1536,
-            "text-embedding-3-large": 3072,
-            "text-embedding-ada-002": 1536,
-        }
-        return dimensions.get(self.model, 1536)
+        """Get the dimension of embeddings."""
+        return 512  # voyage-3-lite dimension

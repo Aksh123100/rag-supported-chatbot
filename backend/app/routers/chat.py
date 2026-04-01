@@ -2,8 +2,10 @@
 Chat router for RAG-based responses.
 """
 from typing import List
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import StreamingResponse
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 import json
 
 from app.config import settings
@@ -16,6 +18,7 @@ from app.services.vectorstore import VectorStoreService
 from app.services.llm import LLMService
 
 router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
 # Initialize services
 vector_store = VectorStoreService()
@@ -38,14 +41,17 @@ def format_context(search_results: dict) -> str:
 
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest):
+@limiter.limit("20/minute")  # Rate limit: 20 requests per minute
+async def chat(request: ChatRequest, http_request: Request):
     """
     Process a chat message and return a RAG-based response.
 
     This endpoint:
     1. Searches the knowledge base for relevant documents
     2. Formats context from retrieved documents
-    3. Generates a response using OpenAI with the context
+    3. Generates a response using LLM with the context
+    
+    Rate limit: 20 requests per minute per IP
     """
     try:
         # Search for relevant documents

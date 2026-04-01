@@ -43,7 +43,22 @@ class Settings(BaseSettings):
     api_prefix: str = os.getenv("API_PREFIX", "/api/v1")
 
     # CORS Settings
-    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    cors_origins: List[str] = []
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Parse CORS_ORIGINS from environment (JSON array format)
+        cors_env = os.getenv("CORS_ORIGINS", "")
+        if cors_env:
+            import json
+            try:
+                self.cors_origins = json.loads(cors_env)
+            except json.JSONDecodeError:
+                # Fallback to comma-separated list
+                self.cors_origins = [origin.strip() for origin in cors_env.split(",")]
+        else:
+            # Default for local development
+            self.cors_origins = ["http://localhost:3000", "http://localhost:5173"]
 
     # Chunking Settings
     chunk_size: int = 1000

@@ -42,7 +42,7 @@ def format_context(search_results: dict) -> str:
 
 @router.post("/chat", response_model=ChatResponse)
 @limiter.limit("20/minute")  # Rate limit: 20 requests per minute
-async def chat(request: ChatRequest, http_request: Request):
+async def chat(http_request: Request, request: ChatRequest):
     """
     Process a chat message and return a RAG-based response.
 

@@ -1,26 +1,26 @@
 # RAG Support Chatbot
 
-A production-ready **RAG (Retrieval-Augmented Generation)** customer support chatbot with FastAPI backend and React frontend. Deployed on **Render (Free Tier)** for 24/7 availability.
+A production-ready RAG (Retrieval-Augmented Generation) customer support chatbot with a FastAPI backend and React frontend. Deployed on Vercel + Render for 24/7 availability.
 
-🌐 **Live Demo**: [https://rag-chatbot-frontend.onrender.com](https://rag-chatbot-frontend.onrender.com)
+🌐 **Live Demo:** https://rag-supported-chatbot.vercel.app
 
-![RAG Architecture](https://img.shields.io/badge/Architecture-RAG-blue)
-![Python](https://img.shields.io/badge/Python-3.11-green)
-![React](https://img.shields.io/badge/React-18-61DAFB)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688)
+![RAG Architecture](https://img.shields.io/badge/RAG-Architecture-blue)
+![Python](https://img.shields.io/badge/Python-3.11+-green)
+![React](https://img.shields.io/badge/React-TypeScript-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109-teal)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
 ## 🎯 What is RAG?
 
-Traditional chatbots only know what they were trained on. **RAG** makes them smarter:
+Traditional chatbots only know what they were trained on. RAG makes them smarter:
 
-1. **Retrieve**: Search your knowledge base for relevant documents
-2. **Augment**: Add that context to the user's question
-3. **Generate**: LLM creates an accurate, grounded answer
+1. **Retrieve** — Search a knowledge base for relevant documents using semantic similarity
+2. **Augment** — Add that context to the user's question
+3. **Generate** — LLM creates an accurate, grounded answer with source citations
 
-**Result**: Answers based on YOUR data with source citations!
+Result: Answers based on **your data**, not hallucinations.
 
 ---
 
@@ -28,107 +28,41 @@ Traditional chatbots only know what they were trained on. **RAG** makes them sma
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   React Client  │────▶│  FastAPI Backend │────▶│   Groq LLM      │
-│   (Port 5173)   │     │   (Port 8000)    │     │  (Llama 3.3)    │
+│   React Client  │────▶│  FastAPI Backend │────▶│    Groq LLM     │
+│  (TypeScript)   │     │   (Port 8000)    │     │  (Llama 3.3 70B)│
 └─────────────────┘     └────────┬────────┘     └─────────────────┘
                                   │
-                                  ▼
-                         ┌─────────────────┐
-                         │  FAISS Vector   │
-                         │  Store (Local)  │
-                         └─────────────────┘
-                                  │
-                                  ▼
-                         ┌─────────────────┐
-                         │  Voyage AI      │
-                         │  (Embeddings)   │
-                         └─────────────────┘
+                    ┌─────────────┴─────────────┐
+                    ▼                           ▼
+           ┌─────────────────┐       ┌─────────────────┐
+           │  FAISS Vector   │       │   Voyage AI      │
+           │  Store (Local)  │       │  (Embeddings)    │
+           └─────────────────┘       └─────────────────┘
 ```
+
+**Stack:**
+- **LLM:** Groq API — Llama 3.3 70B (free tier, ultra-fast inference)
+- **Embeddings:** Voyage AI — voyage-3-lite (free tier, 512-dim vectors)
+- **Vector Store:** FAISS (local, CPU-compatible, no external DB needed)
+- **Backend:** FastAPI + Uvicorn
+- **Frontend:** React + TypeScript + Vite + Tailwind CSS
+- **Deployment:** Vercel (frontend) + Render (backend) + Docker
 
 ---
 
-## 📊 Key Features
+## ✅ Features
 
-✅ **RAG Architecture** - Retrieve relevant documents before generating responses  
-✅ **Vector Search** - Semantic search using Voyage AI embeddings (free)  
-✅ **Groq LLM** - Lightning-fast responses with Llama 3.3 70B (free)  
-✅ **Source Citations** - Shows which documents were used  
-✅ **Conversation History** - Maintains context across messages  
-✅ **Streaming Responses** - Real-time response streaming  
-✅ **Rate Limiting** - Built-in protection (20 req/min)  
-✅ **Docker Support** - One-command deployment  
-✅ **Production Ready** - Health checks, CORS, error handling
-
----
-
-## 🚀 Quick Start (Local)
-
-### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- Groq API Key ([Get free key](https://console.groq.com/keys))
-- Voyage AI Key ([Get free key](https://dash.voyageai.com/api-keys))
-
-### 1. Backend Setup
-
-```bash
-cd backend
-
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate  # Windows
-# source venv/bin/activate  # Linux/Mac
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-copy .env.example .env
-# Edit .env and add your API keys
-
-# Load sample documents
-python -c "from app.services.vectorstore import VectorStoreService; from app.utils.chunking import chunk_text; import os; vs = VectorStoreService(); [vs.add_documents(chunk_text(open(f'data/sample_docs/{f}').read(), 500, 50), [{'source': f}]*len(chunk_text(open(f'data/sample_docs/{f}').read(), 500, 50))) for f in os.listdir('data/sample_docs') if f.endswith('.txt')]; print(f'Loaded {vs.get_document_count()} documents')"
-
-# Run backend
-uvicorn app.main:app --reload --port 8000
-```
-
-### 2. Frontend Setup
-
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-### 3. Access Application
-
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
+- **RAG Pipeline** — Retrieves relevant documents before every response
+- **Semantic Search** — Voyage AI embeddings for accurate similarity matching
+- **Fast Inference** — Groq's LPU delivers sub-second response times
+- **Source Citations** — Every answer shows which documents were used
+- **Conversation History** — Maintains context across multi-turn chats
+- **Streaming Responses** — Real-time token streaming to the UI
+- **Document Management** — Upload, search, and delete knowledge base docs via API
+- **Rate Limiting** — Built-in protection (20 req/min via SlowAPI)
+- **Docker Support** — One-command local deployment
 
 ---
-
-## 🌐 Deploy to Production (FREE)
-
-## 🏗️ Architecture
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   React Client  │────▶│  FastAPI Backend │────▶│   OpenAI API    │
-│   (Port 5173)   │     │   (Port 8000)    │     │                 │
-└─────────────────┘     └────────┬────────┘     └─────────────────┘
-                                 │
-                                 ▼
-                        ┌─────────────────┐
-                        │    ChromaDB     │
-                        │  (Vector Store) │
-                        └─────────────────┘
-```
 
 ## 📁 Project Structure
 
@@ -136,26 +70,21 @@ npm run dev
 rag-support-chatbot/
 ├── backend/
 │   ├── app/
-│   │   ├── __init__.py
-│   │   ├── main.py              # FastAPI app entry
-│   │   ├── config.py            # Configuration settings
+│   │   ├── main.py              # FastAPI app entry point
+│   │   ├── config.py            # Settings & env vars
 │   │   ├── models/
-│   │   │   ├── __init__.py
-│   │   │   └── schemas.py       # Pydantic models
+│   │   │   └── schemas.py       # Pydantic request/response models
 │   │   ├── routers/
-│   │   │   ├── __init__.py
 │   │   │   ├── chat.py          # Chat endpoints
-│   │   │   └── documents.py     # Document management
+│   │   │   └── documents.py     # Document management endpoints
 │   │   ├── services/
-│   │   │   ├── __init__.py
-│   │   │   ├── embedding.py     # OpenAI embeddings
-│   │   │   ├── vectorstore.py   # ChromaDB operations
-│   │   │   └── llm.py           # OpenAI LLM
+│   │   │   ├── embedding.py     # Voyage AI embeddings
+│   │   │   ├── vectorstore.py   # FAISS vector store operations
+│   │   │   └── llm.py           # Groq LLM (+ Gemini/Ollama/OpenAI support)
 │   │   └── utils/
-│   │       ├── __init__.py
-│   │       └── chunking.py      # Document chunking
+│   │       └── chunking.py      # Document chunking logic
 │   ├── data/
-│   │   └── sample_docs/         # Sample knowledge base
+│   │   └── sample_docs/         # Knowledge base documents (12+ files)
 │   ├── tests/
 │   ├── requirements.txt
 │   ├── .env.example
@@ -172,113 +101,115 @@ rag-support-chatbot/
 └── docker-compose.yml
 ```
 
-## 🚀 Quick Start
+---
+
+## 🚀 Quick Start (Local)
 
 ### Prerequisites
 
 - Python 3.11+
 - Node.js 18+
-- OpenAI API Key
+- [Groq API Key](https://console.groq.com/keys) (free)
+- [Voyage AI Key](https://dash.voyageai.com/) (free)
 
 ### 1. Backend Setup
 
 ```bash
-# Navigate to backend
 cd backend
 
-# Create virtual environment
+# Create and activate virtual environment
 python -m venv venv
-
-# Activate virtual environment
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Linux/Mac
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Copy environment file
+# Configure environment
 copy .env.example .env
+# Edit .env and add your API keys:
+# GROQ_API_KEY=your-groq-key
+# VOYAGE_API_KEY=your-voyage-key
 
-# Edit .env and add your OpenAI API key
-# OPENAI_API_KEY=your-api-key-here
+# Load sample documents into FAISS
+python -c "
+from app.services.vectorstore import VectorStoreService
+from app.utils.chunking import chunk_text
+import os
+vs = VectorStoreService()
+for f in os.listdir('data/sample_docs'):
+    if f.endswith('.txt'):
+        text = open(f'data/sample_docs/{f}').read()
+        chunks = chunk_text(text, 500, 50)
+        vs.add_documents(chunks, [{'source': f}] * len(chunks))
+print(f'Loaded {vs.get_document_count()} chunks')
+"
 
-# Run the backend
+# Run backend
 uvicorn app.main:app --reload --port 8000
 ```
 
 ### 2. Frontend Setup
 
 ```bash
-# Navigate to frontend (in new terminal)
 cd frontend
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
 ```
 
-### 3. Load Sample Data
+### 3. Access the App
 
-```bash
-# Use the API to load sample documents
-# Or use Python to load documents programmatically
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| Backend API | http://localhost:8000 |
+| API Docs (Swagger) | http://localhost:8000/docs |
 
-# See scripts/load_data.py for example
+---
+
+## 🔧 Environment Variables
+
+Create a `.env` file in the `backend/` directory:
+
+```env
+# LLM - Groq (required)
+GROQ_API_KEY=your-groq-api-key
+GROQ_MODEL=llama-3.3-70b-versatile
+USE_GROQ=true
+
+# Embeddings - Voyage AI (required)
+VOYAGE_API_KEY=your-voyage-api-key
+
+# Optional alternative LLMs (set USE_GROQ=false to switch)
+# OPENAI_API_KEY=your-openai-key
+# GEMINI_API_KEY=your-gemini-key
+# OLLAMA_BASE_URL=http://localhost:11434
 ```
 
-### 4. Access the Application
-
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:8000
-- API Docs: http://localhost:8000/docs
-
-## 🔧 Configuration
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OPENAI_API_KEY` | OpenAI API key | Required |
-| `OPENAI_MODEL` | GPT model to use | `gpt-4-turbo-preview` |
-| `EMBEDDING_MODEL` | Embedding model | `text-embedding-3-small` |
-| `CHROMA_PERSIST_DIRECTORY` | Vector DB path | `./data/chroma_db` |
-| `CHROMA_COLLECTION_NAME` | Collection name | `support_docs` |
+---
 
 ## 📡 API Endpoints
 
 ### Chat
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/chat` | Send a chat message |
-| POST | `/api/v1/chat/stream` | Stream chat response |
-| POST | `/api/v1/chat/quick` | Quick chat (no history) |
+|---|---|---|
+| POST | `/api/v1/chat` | Send a message (with history) |
+| POST | `/api/v1/chat/stream` | Streaming chat response |
+| POST | `/api/v1/chat/quick` | Single-turn quick chat |
 
 ### Documents
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/documents/upload` | Upload document |
+|---|---|---|
+| POST | `/api/v1/documents/upload` | Upload text document |
 | POST | `/api/v1/documents/upload-file` | Upload file |
-| POST | `/api/v1/documents/search` | Search documents |
+| POST | `/api/v1/documents/search` | Semantic search |
 | DELETE | `/api/v1/documents/{id}` | Delete document |
 | DELETE | `/api/v1/documents/clear` | Clear all documents |
-| GET | `/api/v1/documents/stats` | Get statistics |
+| GET | `/api/v1/documents/stats` | Knowledge base stats |
 
-## 🧪 Testing
-
-```bash
-# Run tests
-cd backend
-pytest
-
-# Run with coverage
-pytest --cov=app tests/
-```
+---
 
 ## 🐳 Docker Deployment
 
@@ -293,32 +224,36 @@ docker-compose logs -f
 docker-compose down
 ```
 
-## 📊 Key Features
+---
 
-- **RAG Architecture**: Retrieve relevant documents before generating responses
-- **Vector Search**: Semantic search using OpenAI embeddings
-- **Conversation History**: Maintains context across messages
-- **Source Citations**: Shows which documents were used for responses
-- **Document Management**: Upload, search, and delete documents
-- **Streaming Responses**: Real-time response streaming
-- **Modern UI**: Clean React frontend with Tailwind CSS
+## 🧪 Testing
+
+```bash
+cd backend
+pytest
+pytest --cov=app tests/   # with coverage
+```
+
+---
 
 ## 🔒 Security Notes
 
-- Never commit `.env` files with API keys
-- Use environment variables for sensitive data
-- Consider rate limiting for production
-- Add authentication for production use
+- Never commit `.env` files — they are in `.gitignore`
+- Always store API keys as environment variables, never in source code
+- Rate limiting is enabled by default (20 req/min)
+- Add authentication (JWT/API keys) before exposing to public traffic
+
+---
 
 ## 📈 Scaling for Production
 
-1. **Replace ChromaDB** with Pinecone or Weaviate for large scale
-2. **Add caching** with Redis for frequently asked questions
-3. **Implement rate limiting** to prevent abuse
-4. **Add authentication** (JWT, API keys)
-5. **Use async processing** for document uploads
-6. **Monitor with Prometheus/Grafana**
-7. **Deploy with Kubernetes** for horizontal scaling
+- Replace FAISS with **Pinecone** or **Weaviate** for multi-instance deployments
+- Add **Redis** caching for frequent queries
+- Add **JWT authentication** for user-specific sessions
+- Use **async document processing** for large file uploads
+- Monitor with **Prometheus + Grafana**
+
+---
 
 ## 📝 License
 

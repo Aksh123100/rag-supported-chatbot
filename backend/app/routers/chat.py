@@ -14,15 +14,14 @@ from app.models.schemas import (
     ChatResponse,
     SourceDocument,
 )
-from app.services.vectorstore import VectorStoreService
-from app.services.llm import LLMService
+from app.dependencies import get_vector_store, get_llm_service
 
 router = APIRouter()
 limiter = Limiter(key_func=get_remote_address)
 
-# Initialize services
-vector_store = VectorStoreService()
-llm_service = LLMService()
+# Get shared service instances
+vector_store = get_vector_store()
+llm_service = get_llm_service()
 
 
 def format_context(search_results: dict) -> str:

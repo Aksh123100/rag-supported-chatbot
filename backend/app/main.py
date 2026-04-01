@@ -53,10 +53,10 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint for monitoring."""
-    from app.services.vectorstore import VectorStoreService
+    from app.dependencies import get_vector_store
     
     try:
-        vs = VectorStoreService()
+        vs = get_vector_store()
         doc_count = vs.get_document_count()
         return {
             "status": "healthy",

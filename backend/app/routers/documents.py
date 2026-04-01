@@ -14,13 +14,13 @@ from app.models.schemas import (
     SearchResponse,
     SearchResult,
 )
-from app.services.vectorstore import VectorStoreService
+from app.dependencies import get_vector_store
 from app.utils.chunking import smart_chunk
 
 router = APIRouter()
 
-# Initialize services
-vector_store = VectorStoreService()
+# Get shared service instance
+vector_store = get_vector_store()
 
 
 @router.post("/documents/upload", response_model=DocumentUploadResponse)

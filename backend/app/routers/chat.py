@@ -41,8 +41,7 @@ def format_context(search_results: dict) -> str:
 
 
 @router.post("/chat", response_model=ChatResponse)
-@limiter.limit("20/minute")  # Rate limit: 20 requests per minute
-async def chat(http_request: Request, request: ChatRequest):
+async def chat(request: ChatRequest):
     """
     Process a chat message and return a RAG-based response.
 
@@ -50,8 +49,6 @@ async def chat(http_request: Request, request: ChatRequest):
     1. Searches the knowledge base for relevant documents
     2. Formats context from retrieved documents
     3. Generates a response using LLM with the context
-    
-    Rate limit: 20 requests per minute per IP
     """
     try:
         # Search for relevant documents
